@@ -15,15 +15,15 @@ pipeline {
 
     stage('Build Docker image') {
       steps {
-        sh 'docker build -t davictor/2048-game:1.1.0 .'
+        sh 'sudo docker build -t davictor/2048-game:1.1.0 .'
       }
     }
     
     stage('Push to Docker Hub') {
       steps {
         sh '''
-          cat ~/docker_password.txt | docker login --username davictor --password-stdin
-          docker push davictor/2048-game:1.1.0
+          cat ~/docker_password.txt | sudo docker login --username davictor --password-stdin
+          sudo docker push davictor/2048-game:1.1.0
         '''
       }
     }
