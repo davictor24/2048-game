@@ -1,19 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    service: game
   name: game
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      service: game
+      app: game
+  replicas: 3
   template:
     metadata:
       labels:
-        service: game
-        api: external
+        app: game
     spec:
       containers:
       - image: davictor/2048-game:1.1.0
