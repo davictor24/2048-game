@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: game
+  name: game
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      service: game
+  template:
+    metadata:
+      labels:
+        service: game
+        api: external
+    spec:
+      containers:
+      - image: davictor/2048-game:1.1.0
+        name: game
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "200m"
+          limits:
+            memory: "1024Mi"
+            cpu: "400m"
+      restartPolicy: Always
