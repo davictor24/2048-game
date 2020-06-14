@@ -38,6 +38,7 @@ pipeline {
     stage('Rollout') {
       steps {
         sh '''
+          ssh -o StrictHostKeyChecking=no -i $ssh_key $host uptime
           scp -i $ssh_key deployment/k8s/deployment.yaml $host:/home/ec2-user/deployment.yaml
           ssh -i $ssh_key $host
           kubectl apply -f deployment.yaml
