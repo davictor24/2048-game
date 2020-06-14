@@ -39,9 +39,7 @@ pipeline {
       steps {
         sh '''
           scp -i $ssh_key deployment/k8s/deployment.yaml $host:/home/ec2-user/deployment.yaml
-          ssh -tt -i $ssh_key $host
-          kubectl apply -f deployment.yaml
-          logout
+          ssh -tt -i $ssh_key $host kubectl apply -f deployment.yaml
         '''
       }
     }
