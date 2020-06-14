@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment { 
-    docker_image = 'davictor/2048-game:1.1.0'
+    docker_image = 'davictor/2048-game:1.2.0'
     host = 'ec2-user@ec2-3-133-35-106.us-east-2.compute.amazonaws.com'
     ssh_key = '~/k8s-cluster-2048.pem'
   }

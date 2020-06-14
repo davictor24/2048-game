@@ -18,7 +18,7 @@ spec:
         app: game
     spec:
       containers:
-      - image: davictor/2048-game:1.1.0
+      - image: davictor/2048-game:1.2.0
         name: game
         imagePullPolicy: Always
         ports:
