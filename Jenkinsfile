@@ -38,8 +38,8 @@ pipeline {
     stage('Rollout') {
       steps {
         sh '''
-          scp -i $ssh_key deployment/k8s/deployment.yaml $host:/home/ec2-user/deployment.yaml
-          ssh -i $ssh_key $host
+          sudo scp -i $ssh_key deployment/k8s/deployment.yaml $host:/home/ec2-user/deployment.yaml
+          sudo ssh -i $ssh_key $host
           kubectl apply -f deployment.yaml
           logout
         '''
