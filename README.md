@@ -13,11 +13,13 @@ The application deployed is a [2048 game](https://github.com/gabrielecirulli/204
 - Jenkins applies the deployment script on the Kubernetes cluster via SSH. If there is an update, Kubernetes orchestrates a rolling deployment.
 - The game is accessible via a public URL.
 
+A temporarily running infrastructure can be tested here: http://ad72275197b3449298d6bfcd97d99769-1358871494.us-east-2.elb.amazonaws.com/.
+
 ## Infrastructure overview
 - There are three public and three private subnets in three Availability Zones. 
 Each AZ (`us-east-2a`, `us-east-2b` and `us-east-2c`) has a public and private subnet.
 - The private subnets host the Kubernetes nodes in an autoscaling group.
-- The public subnets contain NAT gateways and Bastion hosts in an autoscaling group.
+- The public subnets contain NAT gateways and Bastion hosts in an autoscaling group. These Bastion hosts have `kubectl` bound to the Kubernetes cluster in the private subnets.
 
 ## Network addresses (CIDR)
 - VPC - 10.0.0.0/16
